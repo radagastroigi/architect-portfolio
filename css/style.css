@@ -1,0 +1,93 @@
+/* css/style.css */
+
+/* --- RESET & VARS --- */
+:root {
+    --bg: #0f0f0f;
+    --text: #f0f0f0;
+    --accent: #888;
+    --font-main: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { 
+    background: var(--bg); 
+    color: var(--text); 
+    font-family: var(--font-main); 
+    opacity: 0; 
+    transition: opacity 0.5s ease; /* Page Fade In */
+}
+body.loaded { opacity: 1; }
+a { text-decoration: none; color: inherit; transition: 0.3s; }
+img { display: block; width: 100%; }
+
+/* --- NAVIGATION --- */
+nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 2rem 5%; position: fixed; top: 0; width: 100%; 
+    background: rgba(15,15,15,0.9); backdrop-filter: blur(10px); z-index: 100;
+}
+.logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; }
+.nav-links { display: flex; gap: 2rem; }
+.nav-links a { font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: var(--accent); }
+.nav-links a:hover, .nav-links a.active { color: white; }
+
+/* --- COMMON UTILS --- */
+.container { padding: 8rem 5% 4rem 5%; max-width: 1400px; margin: 0 auto; }
+.btn { 
+    display: inline-block; padding: 15px 40px; border: 1px solid white; 
+    margin-top: 2rem; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px;
+}
+.btn:hover { background: white; color: black; }
+
+/* --- HOME HERO --- */
+.hero { 
+    height: 100vh; display: flex; flex-direction: column; 
+    justify-content: center; padding: 0 10%; 
+}
+.hero h1 { font-size: 5vw; line-height: 1.1; margin-bottom: 2rem; }
+.hero p { color: var(--accent); max-width: 500px; line-height: 1.6; }
+
+/* --- WORK GRID (Gallery) --- */
+.work-grid { 
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(400px, 1fr)); 
+    gap: 3rem; margin-top: 2rem; 
+}
+.project-card { cursor: pointer; }
+.card-img-container { overflow: hidden; margin-bottom: 1rem; }
+.card-img-container img { transition: transform 0.6s ease; height: 350px; object-fit: cover; }
+.project-card:hover img { transform: scale(1.05); }
+.card-text h3 { font-size: 1.5rem; font-weight: 400; margin-bottom: 0.5rem; }
+.card-text p { color: var(--accent); font-size: 0.9rem; }
+
+/* --- PROJECT DETAIL PAGE --- */
+.project-hero { 
+    height: 70vh; width: 100%; background-size: cover; background-position: center;
+    position: relative; margin-bottom: 4rem;
+}
+.hero-overlay {
+    position: absolute; bottom: 0; left: 0; width: 100%; padding: 4rem 5%;
+    background: linear-gradient(to top, #0f0f0f, transparent);
+}
+.meta-grid { 
+    display: grid; grid-template-columns: repeat(4, 1fr); 
+    border-top: 1px solid #333; border-bottom: 1px solid #333;
+    padding: 2rem 0; margin-bottom: 4rem;
+}
+.meta-item span { display: block; color: var(--accent); font-size: 0.75rem; text-transform: uppercase; margin-bottom: 5px; }
+.project-desc { font-size: 1.5rem; line-height: 1.6; max-width: 900px; margin-bottom: 5rem; }
+.project-gallery { display: flex; flex-direction: column; gap: 4rem; }
+.next-nav { margin-top: 8rem; padding-top: 4rem; border-top: 1px solid #333; text-align: center; }
+
+/* --- RESUME & CONTACT --- */
+.resume-frame { width: 100%; height: 80vh; border: none; background: #fff; margin-top: 2rem; }
+.contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; margin-top: 4rem; }
+.contact-label { color: var(--accent); text-transform: uppercase; font-size: 0.8rem; margin-bottom: 1rem; }
+.contact-value { font-size: 2rem; display: block; margin-bottom: 2rem; }
+
+/* --- MOBILE --- */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 3rem; }
+    .work-grid { grid-template-columns: 1fr; }
+    .meta-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .contact-row { grid-template-columns: 1fr; }
+}
